@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Login from './Mycomponent/Login';
+import { SignUp } from './Mycomponent/SignUp';
+
+
 
 function App() {
+  let [login,setLogin]=useState("Login")
+  function onClick(data){
+    setLogin(data)
+   }
+
+  
+  let maiportal=<SignUp ></SignUp>;
+  if(login=="Login"){
+    maiportal=<Login  onClick={onClick}  > </Login>
+   
+  }else{
+    maiportal=<SignUp ></SignUp>
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h2>{login}Portal </h2> 
+      {maiportal}
     </div>
+    
   );
 }
 
